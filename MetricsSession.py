@@ -76,10 +76,27 @@ class MetricsSession():
     def convertEpochToTime(self, timeStamp):
         return time.strftime('%H:%M:%S',  time.gmtime(timeStamp/1000.))
 
+
+    def extraeCenario(self):
+        path_file = "/home/berg/Área de Trabalho/Cenario_Experimento.txt"
+        file = open(path_file, "r")
+        arq1 = open('/home/berg/Arquivos/arq3.txt', "w")
+        arq2 = open('/home/berg/Arquivos/arq4.txt', "w")
+
+        for line in file:
+            line = line.strip().split()
+            #s = line[1] + " " + line[2]
+            arq1.write(line[1] + '\n')
+            arq2.write(line[2] + '\n')
+
+        arq2.close()
+        arq1.close()
+
 m = MetricsSession(0, "")
-print'Grupo:', input_file["team"]
-print'Taxa media de bits:', m.averageBitrate(), 'bit/s'
-print'Quantidade de interrupcoes:', len(input_file['interruption'])
-print'Tempo medio de interrupcoes:', m.averageInterruptions(), 's'
-print'Instabilidade:', m.instability(), '- Entre 0-1 (1 maior instabilidade)'
+# print'Grupo:', input_file["team"]
+# print'Taxa media de bits:', m.averageBitrate(), 'bit/s'
+# print'Quantidade de interrupcoes:', len(input_file['interruption'])
+# print'Tempo medio de interrupcoes:', m.averageInterruptions(), 's'
+# print'Instabilidade:', m.instability(), '- Entre 0-1 (1 maior instabilidade)'
+m.extraeCenario()
 # m.bitrate()
