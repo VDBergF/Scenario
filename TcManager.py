@@ -29,7 +29,7 @@ def run(start = 0, interval = True):
             subprocess.call(['sudo', '-S', path_tc, 'update', 'UP:' + obj.rate + "kbit"])
 
         sleep = (obj.seconds - obj.seconds_prev)
-        
+
         print("Sleep of " + str(sleep) + " seconds to speed of " + obj.rate + " UP kbit")
 	time.sleep(sleep)
         sys.stdout.flush()
