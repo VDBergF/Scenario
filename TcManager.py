@@ -8,8 +8,8 @@ import sys
 #from DirectoryManager import DirectoryManager
 #from MetricsSession import MetricsSession
 
-path_file = "/home/berg/PycharmProjects/Scripts/bw_fluctation_claro_sp_manha.txt"
-path_tc = '/home/berg/PycharmProjects/Scripts/tc.bash'
+path_file = "bw_fluctation_claro_sp_manha.txt"
+path_tc = 'tc.bash'
 file = open(path_file, "r")
 section_in_seconds = 900
 
