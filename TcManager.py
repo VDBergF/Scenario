@@ -4,21 +4,18 @@ import subprocess
 import time
 import sys
 
-
-#from DirectoryManager import DirectoryManager
-#from MetricsSession import MetricsSession
-
-path_file = "bw_fluctation_claro_sp_manha.txt"
-path_tc = 'tc.bash'
+path_file = "bw_fluctation_claro_sp_noite.txt"
+path_tc = '/home/berg/PycharmProjects/Scripts/tc.bash'
 file = open(path_file, "r")
 section_in_seconds = 900
 
 def run(start = 0, interval = True):
     scenario_lst = Scenario(file)
     start = start
-    index = 1838
+    index = 7894
 
-    if start != 0: index = scenario_lst.search_start(start)
+    if start != 0:
+        index = scenario_lst.search_start(start)
 
     for i, obj in enumerate(scenario_lst.lst[index:]):
 
@@ -31,7 +28,8 @@ def run(start = 0, interval = True):
         sleep = (obj.seconds - obj.seconds_prev)
 
         print("Sleep of " + str(sleep) + " seconds to speed of " + obj.rate + " UP kbit")
-	time.sleep(sleep)
+
+        time.sleep(sleep)
         sys.stdout.flush()
 
         #if interval and obj.seconds_prev >= (long(start) + section_in_seconds): break # secao de 15 minutos
@@ -39,17 +37,7 @@ def run(start = 0, interval = True):
     subprocess.call(['sudo', '-S', path_tc, 'stop'])
     subprocess.call(['sudo', '-S', path_tc, 'show'])
 
-    #log_path = processingAfterEnd(scenario_lst)
-    #metrics = MetricsSession(scenario_lst.averageBandwith(), log_path)
-
     print("Finish...")
-
-
-#def processingAfterEnd(scenario_lst):
- #   dir = DirectoryManager()  # New Object DirectoryManager
-  #  path_dir = dir.create(team_name, dir.path_destiny)  # new folder or directory
-  #  path_file_rename = dir.renameFile(team_name)  # rename log file and return you path
-  #  return dir.move(path_file_rename, path_dir)  # move log file to folder path and return you new path
 
 class Data():
 
@@ -76,7 +64,7 @@ class Scenario():
         prev = -1
         for line in file:
             line = line.strip().split()
-            self.lst.append(Data(line[0], line[1], line[2], prev))
+            self.lst.append(Data(line[0], line[1], float(line[2])*3, prev))
             prev = line[1]
 
     def search_start(self, start):
@@ -97,9 +85,5 @@ class Scenario():
     def printScenario(self):
         [data.printData() for data in self.lst]
 
-# if len(sys.argv) > 1: run(sys.argv[1], sys.argv[2])
-# else: run()
-
-#start = raw_input("Insira inicio: ")
-start = 1838
+start = 0
 run(long(start))

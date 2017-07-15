@@ -28,7 +28,7 @@ class Scenario():
 file = open(path_file, "r")
 scenario_lst = Scenario(file).lst
 
-end_interval = 900
+end_interval = 1800
 highestSum = 0
 sum = 0
 highesIndex = 0
@@ -51,3 +51,18 @@ for start_interval, obj_file in enumerate(scenario_lst):
         break
 
 print(highesIndex)
+
+sum = 0
+bitrate = 0
+for i, obj in enumerate(scenario_lst[highesIndex:]):
+    sum += obj.rate
+
+    if i == 354:
+        bitrate = sum / i
+        break;
+
+print (bitrate)
+
+
+
+
