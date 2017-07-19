@@ -54,10 +54,10 @@ print(highesIndex)
 
 sum = 0
 bitrate = 0
-for i, obj in enumerate(scenario_lst[highesIndex:]):
+for i, obj in enumerate(scenario_lst[7897:]):
     sum += obj.rate
 
-    if i == 354:
+    if i == 63:
         bitrate = sum / i
         break;
 
