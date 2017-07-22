@@ -4,10 +4,13 @@ import subprocess
 import time
 import sys
 
-path_file = "bw_fluctation_claro_sp_noite.txt"
-path_tc = '/home/berg/PycharmProjects/Scripts/tc.bash'
+path_file = "bw_fluctation_claro_sp_meanBw.txt"
+path_tc = './tc.bash'
 file = open(path_file, "r")
 section_in_seconds = 900
+
+scenario_file = open(sys.argv[1], "w")
+time_start = time.time()
 
 def run(start = 0, interval = True):
     scenario_lst = Scenario(file)
@@ -18,6 +21,8 @@ def run(start = 0, interval = True):
         index = scenario_lst.search_start(start)
 
     for i, obj in enumerate(scenario_lst.lst[index:]):
+
+        scenario_file.write( str(int((time.time() - time_start))) + " " + str(obj.rate) + "\n")
 
         if not scenario_lst.run:
             subprocess.call(['sudo', '-S', path_tc, 'start', 'UP:' + obj.rate + "kbit"])
@@ -33,6 +38,8 @@ def run(start = 0, interval = True):
         sys.stdout.flush()
 
         #if interval and obj.seconds_prev >= (long(start) + section_in_seconds): break # secao de 15 minutos
+
+    scenario_file.close()
 
     subprocess.call(['sudo', '-S', path_tc, 'stop'])
     subprocess.call(['sudo', '-S', path_tc, 'show'])
@@ -64,7 +71,7 @@ class Scenario():
         prev = -1
         for line in file:
             line = line.strip().split()
-            self.lst.append(Data(line[0], line[1], float(line[2])*3, prev))
+            self.lst.append(Data(line[0], line[1], float(line[2]), prev))
             prev = line[1]
 
     def search_start(self, start):
