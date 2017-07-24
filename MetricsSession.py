@@ -5,9 +5,9 @@ import datetime
 
 import sys
 
-path_json = "/home/berg/Experimentos/1cliente/AnimesCurto/Experimento06-1500759627522.json"
+path_json = "/home/berg/Dropbox/Experimentos/3clientes/AnimesCurto/Experimento01-1500739162535.json"
 input_file = json.loads(open(path_json).read()) #Json
-n_sharing = 4 # Number of clients
+n_sharing = 3 # Number of clients
 
 class MetricsSession():
 
@@ -37,16 +37,21 @@ class MetricsSession():
         j = input_file
         lst_chunk = j['logs']['chunk']
 
-        sum1 = sum([(lst_chunk[i]['bitrate']) * (lst_chunk[i]['duration'] / 1000) for i, obj in enumerate(lst_chunk)])
-        return sum1 / (55) # Tempo de sessão em segundos
+        sum1 = sum([(lst_chunk[i]['bitrate'] / 1000) * (lst_chunk[i]['duration'] / 1000) for i, obj in enumerate(lst_chunk)])
+        return sum1 / self.sessionTime() # Tempo de sessão em segundos
+
+    def sessionTime(self):
+        lst_chunk = input_file['logs']['chunk']
+
+        return sum([lst_chunk[i]['duration'] / 1000 for i, obj in enumerate(lst_chunk)])
 
     def justice(self):
         #r_obtained = self.averageBitrate() # Taxa media de bits para cada cliente
-        r_obtained = [473454, 349618, 583145, 511200] # clientes 1,2,3,4
+        r_obtained = [678, 611, 344] # clientes 1,2,3
         r_expected = (854.800 / n_sharing) * self.averageBandwidthScenario # 1) Media dos bitrates disponiveis no mpd 2) numero de clientes 3) media da largura de banda do cenario
 
-        sum1 = sum([r_obtained[i] / r_expected for i, obj in enumerate(r_obtained)]) ** 2
-        sum2 = sum([(r_obtained[i] / r_expected) ** 2 for i, obj in enumerate(r_obtained)])
+        sum1 = sum([r_expected / r_obtained[i] for i, obj in enumerate(r_obtained)]) ** 2
+        sum2 = sum([(r_expected / r_obtained[i]) ** 2 for i, obj in enumerate(r_obtained)])
 
         return float(sum1) / float(sum2)
 
@@ -98,7 +103,7 @@ class MetricsSession():
             time = (long(lst_chunk[i]['timeStamp']) - long(input_file['start'])) / 1000
             bitrate = long(lst_chunk[i]['bitrate']) / 1000
             if lst_chunk[i].get('bandwidthMeter'):
-                bandwidthMeter = lst_chunk[i]['bandwidthMeter']
+                bandwidthMeter = float(lst_chunk[i]['bandwidthMeter']) / 1000.0
             else:
                 print "Nao existe"
 
@@ -119,7 +124,7 @@ class MetricsSession():
         buffer_file.close()
 
     def convertEpochToTime(self, timeStamp):
-        return time.strftime('%H:%M:%S',  time.gmtime(timeStamp/1000.))
+        return time.strftime('%H:%M:%S',  time.gmtime(timeStamp/1000.0))
 
     def extraeCenario(self):
         path_file = "/home/berg/Área de Trabalho/Cenario_Experimento.txt"
@@ -137,13 +142,13 @@ class MetricsSession():
         arq1.close()
 
 m = MetricsSession("")
-# print'Grupo:', input_file["name"]
-# print'Taxa media de bits:', m.averageBitrate(), 'kbit/s'
-# print'Quantidade de interrupcoes:', len(input_file['logs']['interruption'])
-# print'Tempo medio de interrupcoes:', m.averageInterruptions(), 's'
-# print'Instabilidade:', m.instability(), '- Entre 0-1 (1 maior instabilidade)'
-# print'Justiça da sessão', m.justice(), '- Entre 0-1 (1 maior justiça)'
-# print 'Vazão média', m.averageBandwidthScenario, 'kbps'
+print'Grupo:', input_file["name"]
+print'Taxa media de bits:', m.averageBitrate(), 'kbit/s'
+print'Quantidade de interrupcoes:', len(input_file['logs']['interruption'])
+print'Tempo medio de interrupcoes:', m.averageInterruptions(), 's'
+print'Instabilidade:', m.instability(), '- Entre 0-1 (1 maior instabilidade)'
+print'Justiça da sessão', m.justice(), '- Entre 0-1 (1 maior justiça)'
+print 'Vazão média', m.averageBandwidthScenario, 'kbps'
 
-m.extractDataForBitrate()
+# m.extractDataForBitrate()
 # m.extractDataForLevelBuffer()

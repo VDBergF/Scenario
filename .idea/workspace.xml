@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65986aa3-99bd-4873-b8e4-94b0d9234175" name="Default" comment="Ajustes nos calculos">
+    <list default="true" id="65986aa3-99bd-4873-b8e4-94b0d9234175" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MetricsSession.py" afterPath="$PROJECT_DIR$/MetricsSession.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TcManager.py" afterPath="$PROJECT_DIR$/TcManager.py" />
     </list>
     <list id="3becf688-8306-4d53-8be7-009a4c19a8de" name="New changelist" comment="New changelist" />
     <ignored path="Scenario.iws" />
@@ -28,7 +27,7 @@
       <file leaf-file-name="bestWindow.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bestWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
+            <state relative-caret-position="735">
               <caret line="49" column="47" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
               <folding />
             </state>
@@ -38,8 +37,8 @@
       <file leaf-file-name="MetricsSession.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MetricsSession.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="148" column="23" selection-start-line="148" selection-start-column="2" selection-end-line="148" selection-end-column="31" />
+            <state relative-caret-position="518">
+              <caret line="137" column="38" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
               <folding>
                 <element signature="e#15#26#0" expanded="true" />
               </folding>
@@ -50,7 +49,7 @@
       <file leaf-file-name="TcManager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TcManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
+            <state relative-caret-position="1050">
               <caret line="73" column="65" selection-start-line="73" selection-start-column="65" selection-end-line="73" selection-end-column="65" />
               <folding>
                 <element signature="e#25#62#0" expanded="true" />
@@ -64,16 +63,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bw_fluctation_claro_sp_noite.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bw_fluctation_claro_sp_noite.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119400">
-              <caret line="7960" column="0" selection-start-line="7896" selection-start-column="0" selection-end-line="7960" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -595,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500429082704</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Ajustes nos calculos">
+      <created>1500760147574</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1500760147574</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1014,13 +1010,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119400">
           <caret line="7960" column="0" selection-start-line="7896" selection-start-column="0" selection-end-line="7960" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bestWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
+        <state relative-caret-position="735">
           <caret line="49" column="47" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
           <folding />
         </state>
@@ -1036,7 +1031,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TcManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
+        <state relative-caret-position="1050">
           <caret line="73" column="65" selection-start-line="73" selection-start-column="65" selection-end-line="73" selection-end-column="65" />
           <folding>
             <element signature="e#25#62#0" expanded="true" />
@@ -1046,8 +1041,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MetricsSession.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="148" column="23" selection-start-line="148" selection-start-column="2" selection-end-line="148" selection-end-column="31" />
+        <state relative-caret-position="518">
+          <caret line="137" column="38" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
           <folding>
             <element signature="e#15#26#0" expanded="true" />
           </folding>
